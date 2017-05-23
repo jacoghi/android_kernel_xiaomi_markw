@@ -21,6 +21,9 @@
 static int unmap_memory(struct cal_type_data *cal_type,
 			struct cal_block_data *cal_block);
 
+static int unmap_memory(struct cal_type_data *cal_type,
+			struct cal_block_data *cal_block);
+
 size_t get_cal_info_size(int32_t cal_type)
 {
 	size_t size = 0;

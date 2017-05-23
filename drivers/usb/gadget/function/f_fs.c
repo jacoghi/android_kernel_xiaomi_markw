@@ -911,8 +911,7 @@ static ssize_t ffs_epfile_io(struct file *file, struct ffs_io_data *io_data)
 
 			if (unlikely(ret < 0)) {
 				ret = -EIO;
-			} else if (unlikely(
-				   wait_for_completion_interruptible(done))) {
+			} else if (unlikely(wait_for_completion_interruptible_timeout(done, 10*HZ) <= 0)) {
 				spin_lock_irq(&epfile->ffs->eps_lock);
 				/*
 				 * While we were acquiring lock endpoint got
@@ -1582,6 +1581,9 @@ static void ffs_data_clear(struct ffs_data *ffs)
 			ffs->gadget, ffs->flags);
 
 	ffs_closed(ffs);
+
+	if (test_bit(FFS_FL_BOUND, &ffs->flags))
+		ffs_closed(ffs);
 
 	/* Dump ffs->gadget and ffs->flags */
 	if (ffs->gadget)

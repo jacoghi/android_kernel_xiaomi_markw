@@ -220,8 +220,9 @@ dtb-$(CONFIG_ARCH_MSM8953) += msm8953-sim.dtb \
 	msm8953-ext-codec-rcm.dtb \
 	apq8053-cdp.dtb \
 	apq8053-mtp.dtb \
-	apq8053-ext-audio-mtp.dtb \
 	msm8953-cdp-1200p.dtb \
+	msm8953-qrd-wt88553.dtb \
+	apq8053-ext-audio-mtp.dtb \
 	msm8953-iot-mtp.dtb \
 	apq8053-iot-mtp.dtb
 

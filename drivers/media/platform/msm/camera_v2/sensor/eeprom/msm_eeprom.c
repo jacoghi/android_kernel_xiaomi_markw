@@ -654,13 +654,8 @@ static int msm_eeprom_config(struct msm_eeprom_ctrl_t *e_ctrl,
 		rc = msm_eeprom_get_cmm_data(e_ctrl, cdata);
 		break;
 	case CFG_EEPROM_INIT:
-		if (e_ctrl->userspace_probe == 0) {
-			pr_err("%s:%d Eeprom already probed at kernel boot",
-				__func__, __LINE__);
-			rc = -EINVAL;
-			break;
-		}
 		if (e_ctrl->cal_data.num_data == 0) {
+			pr_err("%s:%d \n", __func__, __LINE__);
 			rc = eeprom_init_config(e_ctrl, argp);
 			if (rc < 0) {
 				pr_err("%s:%d Eeprom init failed\n",

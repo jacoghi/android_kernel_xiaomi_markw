@@ -210,6 +210,10 @@ static void radio_hci_smd_deregister(void)
 {
 	FMDBG("");
 
+	/* may deregistered by hcismd_fm_set_enable already */
+	if (hs.hdev == NULL)
+		return;
+
 	radio_hci_unregister_dev();
 	kfree(hs.hdev);
 	hs.hdev = NULL;
